@@ -1,0 +1,48 @@
+//Ques 4. According to the gregorian calendar, it was Monday on the date 01/01/01. If Any year is input through the keyboard write a program to find out what is the day on 1st January of this year.
+
+//Answer
+
+//Program:
+
+#include <stdio.h>
+
+int isLeap(int year) {
+
+if ((year % 4 ==0 && year % 100 != 0) || (year % 400 == 0))
+
+return 1;
+
+else
+
+return 0;
+
+}
+
+int main() {
+
+int year, dayCount = 0, i;
+
+char *weekDays[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+
+printf("Enter year: ");
+
+scanf("%d", &year);
+
+for (i=1; i < year; i++) {
+
+if (isLeap(i)) {
+
+dayCount += 366;
+
+} else {
+
+dayCount += 365;
+}
+}
+
+int dayIndex  = dayCount % 7;
+
+printf("1st January %d is a %s.\n", year, weekDays [dayIndex]);
+
+return 0;
+}
